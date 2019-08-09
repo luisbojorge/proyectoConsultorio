@@ -1,12 +1,14 @@
 import React from 'react';
 import { ButtonGroup, Button, Dropdown } from 'react-bootstrap';
 
-
 import { BrowserRouter as Router, Route, Link,Redirect } from "react-router-dom";
 import Paciente from '../Registros/RegistroPaciente';// .. para regresar a src
 import Login from './login';
 import Admistrador from '../Registros/RegistroAdmi';
 import Cita from '../Registros/RegistroCita';
+import Inicio from '../Login/Inicio';
+import TablaPacientes from '../Registros/TablaPacientes';
+import TablaCitas from '../Registros/TablaCitas';
 
 export default class VistaPrincipal extends React.Component{
   constructor(props){
@@ -39,7 +41,7 @@ export default class VistaPrincipal extends React.Component{
             />   
 
             <Dropdown as={ButtonGroup}>
-              <Button variant="success" href="">Pagina Inicio</Button>
+              <Button variant="success" href="/Inicio">Pagina Inicio</Button>
 
               <Dropdown.Toggle split variant="success" id="dropdown-split-basic" />
 
@@ -47,13 +49,13 @@ export default class VistaPrincipal extends React.Component{
                 <Dropdown.Item href="/RegPaciente"><font color="#33B40D" face="Lucida Sans Unicode">
                   Registro Paciente</font></Dropdown.Item>
 
-                  <Dropdown.Item href="/"><font color="#33B40D" face="Lucida Sans Unicode">
+                  <Dropdown.Item href="/Tabla"><font color="#33B40D" face="Lucida Sans Unicode">
                   Pacinetes Registrados</font></Dropdown.Item>
 
                   <Dropdown.Item href="/RegCita"><font color="#33B40D" face="Lucida Sans Unicode">
                   Registro Cita</font></Dropdown.Item>
 
-                  <Dropdown.Item href="/"><font color="#33B40D" face="Lucida Sans Unicode">
+                  <Dropdown.Item href="/Tabla2"><font color="#33B40D" face="Lucida Sans Unicode">
                   Citas Agendadas</font></Dropdown.Item>
 
                   <Dropdown.Item href="/RegAdministrador"><font color="#33B40D" face="Lucida Sans Unicode">
@@ -67,6 +69,9 @@ export default class VistaPrincipal extends React.Component{
           <Route path='/RegAdministrador' component={Admistrador} />
           <Route path='/RegCita' component={Cita} />
           <Route path='/Login' component={Login} />
+          <Route path='/Inicio' component={Inicio} />
+          <Route path='/Tabla' component={TablaPacientes} />
+          <Route path='/Tabla2' component={TablaCitas} />
       </Router>
       
       );
@@ -75,8 +80,3 @@ export default class VistaPrincipal extends React.Component{
   }
   
 }
-
-
-
-
-   /* await fetch(); el await si tienes varias no ejecuta las demas asta que termine la que empezo a ejecutar*/

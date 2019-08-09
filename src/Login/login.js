@@ -1,7 +1,6 @@
 import React from 'react';
 import { Button, Form } from 'react-bootstrap';
 
-import VistaInicio from './VistaPrincipal';
 export default class Login extends React.Component{
     constructor(props){
         super(props);
@@ -11,13 +10,10 @@ export default class Login extends React.Component{
             ingresar: false,
             sesion: 0,
             redirect:'Login',  
-
         }
 
         console.log(this.props);
     }
-
-   
 
     registrar(){
         var that = this;// Obligatorio
@@ -39,8 +35,8 @@ export default class Login extends React.Component{
                 }
 
                 alert(data.Mensaje)
-               /* if(data.ERROR!==null){
-                    alert(data.ERROR)
+               /*if(data.ACCESO!==null){
+                    alert(data.ACCESO)
                 }else{
 
                     that.props.acceso(1); //acceso al login
@@ -60,6 +56,7 @@ export default class Login extends React.Component{
         }
         
     }
+
     valorCampoUsuario(e){
         console.log(e.target.value);
         this.setState({
@@ -73,11 +70,7 @@ export default class Login extends React.Component{
         });
     }
 
-
     render(){
-
-        
-
             return(
 
                 <center>
@@ -114,11 +107,6 @@ export default class Login extends React.Component{
                    
                 </div>
                 </center>
-            )
-            
-          
-        
-
-        
+            ) 
     }
 }

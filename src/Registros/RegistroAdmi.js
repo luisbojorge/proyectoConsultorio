@@ -24,13 +24,13 @@ export default class RegistroAdmi extends React.Component{
                 alert('Las contraseñas deben de ser iguales');
             }
 
-            fetch('http://localhost:8080/ControlConsultorio/index.php/API/RegistroPaciente',{
+            fetch('http://localhost:8080/ControlConsultorio/index.php/API/RegistroAdmi',{
                 method: 'POST',
                 headers:{
                     'Content-Type': 'application/x-www-form-urlencoded'
                 },
-                body:'nombre='+this.state.nombre + '&apellido='+this.state.apellido + 'telefono='+this.state.telefono + '&direccion='+this.state.direccion
-                + 'sucursal='+this.state.sucursal + '&email='+this.state.email + '&password='+this.state.password + '&repetirpassword='+this.state.repetirpassword
+                body:'nombre='+this.state.nombre + '&apellido='+this.state.apellido + '&telefono='+this.state.telefono + '&direccion='+this.state.direccion
+                + '&sucursal='+this.state.sucursal + '&email='+this.state.email + '&password='+this.state.password + '&repetirpassword='+this.state.repetirpassword
             })
 
             .then(result => result.json())

@@ -1,25 +1,24 @@
 import React from "react";
 import { Table} from 'react-bootstrap';
 
-export default class Tablapacientes extends React.Component{
+export default class TablaCitas extends React.Component{
     constructor(props){
         super(props);
         this.state ={
             texto:"",
-            pacientes: [],
+            cita: [],
 
         }
 
     }
 
     componentDidMount(){
-        this.muestraLista();
-        
+        this.muestracita();
     }
 
-    muestraLista(){
+    muestracita(){
         var thisGeneral=this;
-        fetch('http://localhost:8080/ControlConsultorio/index.php/API/getUsuarios/getPaciente',{
+        fetch('http://localhost:8080/ControlConsultorio/index.php/API/getUsuarios/getCita',{
             method: 'GET'
         })
         .then(result => result.json())
@@ -27,12 +26,12 @@ export default class Tablapacientes extends React.Component{
             console.log(resultado);
             thisGeneral.setState({
                 texto: JSON.stringify(resultado),
-                pacientes: resultado,
+                cita: resultado,
             })
         })
         .catch(function(error){
             console.log(error)
-        })
+        });   
     }
 
     handClick(e) {
@@ -44,47 +43,45 @@ export default class Tablapacientes extends React.Component{
         return (
         <div>
 
-            <link
+           <link
                rel="stylesheet"
                href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
                integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
                crossorigin="anonymous"
                />
 
-            <h1 ALIGN="center">Pacientes Registrados</h1>
-            <br></br><br></br>
 
+            <h1 ALIGN="center">Citas Agendadas</h1>
+            <br></br><br></br>
             <Table striped bordered hover size="sm">
             <thead>
                 <tr>
+               
                 <th>ID</th>
                 <th>Nombre</th>
                 <th>Apellido</th>
-                <th>Edad</th>
-                <th>Telefono</th>
-                <th>Direccion</th>
-                <th>Email</th>
+                <th>Fecha</th>
+                <th>Hora</th>
+                <th>Motivo</th>
                 </tr>
             </thead>
             <tbody>
-                { (this.state.pacientes).map(
+                { (this.state.cita).map(
                     
                     item => (
                     <tr onClick={() => {this.handClick(item)}}>
                         
-                        <td>{item.idpaciente} </td>
+                        <td>{item.id} </td>
                         <td>{item.nombre} </td>
                         <td>{item.apellido} </td>
-                        <td>{item.edad}</td>
-                        <td>{item.telefono}</td>
-                        <td>{item.direccion}</td>
-                        <td>{item.email}</td>
+                        <td>{item.fecha}</td>
+                        <td>{item.hora}</td>
+                        <td>{item.motivo}</td>
                     
                     </tr>
                 )) }
                 </tbody>
             </Table>
-          
         </div>
         )
     }

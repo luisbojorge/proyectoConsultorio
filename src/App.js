@@ -18,7 +18,6 @@ export default class App  extends React.Component {
     }
 
     sesion = localStorage.getItem('sesion');
-    //console.log(sesion);
     this.setState({
       auth: Number(sesion), //Hay que poner el tipo de dato que tiene el state.
     });
